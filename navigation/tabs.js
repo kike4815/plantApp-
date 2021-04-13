@@ -1,7 +1,7 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { View, Text,Image } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { COLORS } from "../constants";
+import { COLORS, icons } from "../constants";
 import { Home } from "../screens/index";
 
 const Tab = createBottomTabNavigator();
@@ -13,6 +13,29 @@ const tabOptions = {
   },
 };
 
+const CameraButton = ()=> {
+    return (
+        <View style={{
+            alignItems:'center',
+            justifyContent:'center',
+            width:50,
+            height:50,
+            borderRadius:25,
+            backgroundColor: COLORS.primary
+        }}>
+            <Image 
+            source={icons.camera}
+            resizeMode='contain'
+                    style={{
+                        width:23,
+                        height:23
+                    }}
+
+            />
+        </View>
+    )
+}
+
 const Tabs = () => {
   return (
     <Tab.Navigator
@@ -23,15 +46,60 @@ const Tabs = () => {
 
           switch (route.name) {
             case "Home":
-              return <Text>Home</Text>;
+              return (
+                  <Image 
+                    source={icons.flash}
+                    resizeMode='contain'
+                    style={{
+                        tintColor: tintColor,
+                        width:25,
+                        height:25
+                    }}
+                  />
+              )
             case "Box":
-              return <Text>Box</Text>;
+              return (
+                <Image 
+                  source={icons.cube}
+                  resizeMode='contain'
+                  style={{
+                      tintColor: tintColor,
+                      width:25,
+                      height:25
+                  }}
+
+                />
+              )
             case "Camera":
-              return <Text>Camera</Text>;
+              return (
+                <CameraButton />
+              )
             case "Search":
-              return <Text>Search</Text>;
+              return (
+                <Image 
+                  source={icons.search}
+                  resizeMode='contain'
+                  style={{
+                      tintColor: tintColor,
+                      width:25,
+                      height:25
+                  }}
+
+                />
+              )
             case "Favourite":
-              return <Text>Favourite</Text>;
+              return (
+                <Image 
+                  source={icons.heart}
+                  resizeMode='contain'
+                  style={{
+                      tintColor: tintColor,
+                      width:25,
+                      height:25
+                  }}
+
+                />
+              )
           }
         },
       })}
